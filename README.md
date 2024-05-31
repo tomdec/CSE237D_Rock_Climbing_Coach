@@ -16,7 +16,14 @@ More information on our approach and terminology can be found on our project [we
 
 ## Requirements
 
-To use this codebase for generating post-climb reports, one must have all the necessary requirements. We provide all libraries which are used in this project as part of the ```requirements.txt``` file. We recommend using a virtual environment during the setup. To properly set up the project run the following command from the root of this project:
+To use this codebase for generating post-climb reports, one must have all the necessary requirements. We provide all libraries which are used in this project as part of the ```requirements.txt``` file. We recommend using a virtual environment during the setup. Do this by running: 
+
+```
+    python -m venv ./.venv
+```
+
+
+To properly set up the project run the following command from the root of this project:
 
 ```
 pip install -r requirements.txt
