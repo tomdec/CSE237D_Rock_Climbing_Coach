@@ -16,6 +16,9 @@ More information on our approach and terminology can be found on our project [we
 
 ## Requirements
 
+Python version: a minimum version of python 3.9 is required. 
+In this application we used [Python 3.12.3](https://www.python.org/downloads/release/python-3123/)
+
 To use this codebase for generating post-climb reports, one must have all the necessary requirements. We provide all libraries which are used in this project as part of the ```requirements.txt``` file. We recommend using a virtual environment during the setup. Do this by running: 
 ```
 python -m venv ./.venv
