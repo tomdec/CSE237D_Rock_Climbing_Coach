@@ -67,6 +67,16 @@ def scale_vector(array):
     max = np.max(np_array)
     return np_array / max
 
+def check_similarity(list1, list2):
+    """
+    Use cosine distance to calculate similarity between vectors.
+    """
+    # normalize arrays to prevent overflow error
+    scaled_pose_1 = scale_vector(list1)
+    scaled_pose_2 = scale_vector(list2)
+
+    return math.acos(1-spatial.distance.cosine(list(scaled_pose_1),list(scaled_pose_2)))
+
 def get_significant_frames_motion_graph(dir,landmarks):
     L = len(landmarks)
     angles = []
@@ -79,11 +89,7 @@ def get_significant_frames_motion_graph(dir,landmarks):
         pose_1 = lm_list1[idx]
         pose_2 = lm_list2[idx]
 
-        # normalize arrays to prevent overflow error
-        scaled_pose_1 = scale_vector(pose_1)
-        scaled_pose_2 = scale_vector(pose_2)
-
-        angle = math.acos(1-spatial.distance.cosine(list(scaled_pose_1),list(scaled_pose_2)))
+        angle = check_similarity(pose_1, pose_2)
         angles.append(angle)
     angles_smooth = savgol_filter(angles,21,3)
     peaks = find_troughs(angles_smooth)[0]
