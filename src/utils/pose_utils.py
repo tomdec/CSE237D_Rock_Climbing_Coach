@@ -56,6 +56,17 @@ def find_troughs(angles):
     peaks = scipy.signal.find_peaks(-1*angles,distance = 21,width=5)
     return peaks
 
+def scale_vector(array):
+    """
+    Normalize the array to have all its values between 0 and 1.
+    But keep their internal ratio the same. 
+
+    => scale the vector, but keep its direction the same.
+    """
+    np_array = np.array(array, dtype=float)
+    max = np.max(np_array)
+    return np_array / max
+
 def get_significant_frames_motion_graph(dir,landmarks):
     L = len(landmarks)
     angles = []
@@ -67,7 +78,12 @@ def get_significant_frames_motion_graph(dir,landmarks):
         
         pose_1 = lm_list1[idx]
         pose_2 = lm_list2[idx]
-        angle = math.acos(1-spatial.distance.cosine(list(pose_1),list(pose_2)))
+
+        # normalize arrays to prevent overflow error
+        scaled_pose_1 = scale_vector(pose_1)
+        scaled_pose_2 = scale_vector(pose_2)
+
+        angle = math.acos(1-spatial.distance.cosine(list(scaled_pose_1),list(scaled_pose_2)))
         angles.append(angle)
     angles_smooth = savgol_filter(angles,21,3)
     peaks = find_troughs(angles_smooth)[0]

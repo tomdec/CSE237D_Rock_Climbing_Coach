@@ -5,6 +5,7 @@ charset-normalizer==2.0.12
 cycler==0.11.0
 fonttools==4.33.3
 idna==3.3
+ipykernel==6.29.4
 joblib==1.1.0
 kiwisolver==1.4.2
 matplotlib==3.9.0
@@ -13,6 +14,7 @@ numpy==1.26.4
 opencv-contrib-python==4.5.5.64
 opencv-python==4.5.5.64
 packaging==21.3
+pandas==2.2.2
 Pillow==10.3.0
 protobuf==4.25.3
 pyparsing==3.0.9

@@ -27,7 +27,7 @@ python -m venv ./.venv
 activate the virtual environment by running:
 On Windows:
 ```
-.venv\Scripts\activate.ps1
+.venv\Scripts\Activate.ps1
 ```
 
 To properly set up the project run the following command from the root of this project:
